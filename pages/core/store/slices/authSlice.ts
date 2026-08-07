@@ -9,36 +9,29 @@ export interface User {
 
 interface AuthState {
     user: User | null;
-    token: string | null;
     isAuthenticated: boolean;
 }
 
 const initialState: AuthState = {
     user: null,
-    token: null,
-    isAuthenticated: false,
+    isAuthenticated: false
 };
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
-        setCredentials: (
-            state,
-            action: PayloadAction<{ user: User; token: string }>
-        ) => {
-            state.user = action.payload.user;
-            state.token = action.payload.token;
+        setUser: (state, action: PayloadAction<User>) => {
+            state.user = action.payload;
             state.isAuthenticated = true;
         },
 
         logout: (state) => {
             state.user = null;
-            state.token = null;
             state.isAuthenticated = false;
         },
-    },
-});
+    }
+})
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setUser, logout } = authSlice.actions;
 export default authSlice.reducer;

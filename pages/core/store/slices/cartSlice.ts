@@ -23,24 +23,20 @@ const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        addItem: (
-            state,
-            action: PayloadAction<Omit<CartItem, "quantity"> & { quantity?: number }>
-        ) => {
-            const existing = state.items.find(
+        addItem: (state, action: PayloadAction<CartItem>) => {
+            const newItem = action.payload;
+
+            const existingItem = state.items.find(
                 (item) =>
-                    item.id === action.payload.id &&
-                    item.color === action.payload.color &&
-                    item.size === action.payload.size
+                    item.id === newItem.id &&
+                    item.color === newItem.color &&
+                    item.size === newItem.size
             );
 
-            if (existing) {
-                existing.quantity += action.payload.quantity || 1;
+            if (existingItem) {
+                existingItem.quantity += newItem.quantity;
             } else {
-                state.items.push({
-                    ...action.payload,
-                    quantity: action.payload.quantity || 1,
-                });
+                state.items.push(newItem);
             }
         },
 
@@ -55,23 +51,22 @@ const cartSlice = createSlice({
 
         decreaseQuantity: (state, action: PayloadAction<string>) => {
             const item = state.items.find((i) => i.id === action.payload);
-            if (item && item.quantity > 1) item.quantity -= 1;
+            if (!item) return;
+
+            if (item.quantity === 1) {
+                state.items = state.items.filter((i) => i.id !== action.payload);
+            } else {
+                item.quantity -= 1;
+            }
         },
 
         clearCart: (state) => {
             state.items = [];
-        },
-    },
-});
+        }
+    }
+})
 
-export const {
-    addItem,
-    removeItem,
-    increaseQuantity,
-    decreaseQuantity,
-    clearCart,
-} = cartSlice.actions;
-
+export const { addItem, removeItem, increaseQuantity, decreaseQuantity, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
 
 // Selectors

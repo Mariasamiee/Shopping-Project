@@ -11,7 +11,7 @@ interface ProductsState {
 const initialState: ProductsState = {
     sort: "newest",
     searchQuery: "",
-    selectedCategory: null,
+    selectedCategory: null
 };
 
 const productsSlice = createSlice({
@@ -31,9 +31,9 @@ const productsSlice = createSlice({
             state.sort = "newest";
             state.searchQuery = "";
             state.selectedCategory = null;
-        },
-    },
-});
+        }
+    }
+})
 
 export const { setSort, setSearchQuery, setCategory, resetFilters } = productsSlice.actions;
 export default productsSlice.reducer;
