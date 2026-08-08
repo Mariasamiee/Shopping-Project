@@ -4,6 +4,7 @@ import storage from "./storage";
 import cartReducer from "./slices/cartSlice";
 import authReducer from "./slices/authSlice";
 import productsReducer from "./slices/productsSlice";
+import { productsApi } from "./api/productsApi";
 
 const persistConfig = {
     key: "root",
@@ -14,7 +15,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     cart: cartReducer,
     auth: authReducer,
-    products: productsReducer
+    products: productsReducer,
+    [productsApi.reducerPath]: productsApi.reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -26,7 +28,7 @@ export const store = configureStore({
             serializableCheck: {
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             }
-        })
+        }).concat(productsApi.middleware)
 })
 
 export const persistor = persistStore(store);
