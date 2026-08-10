@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/pages/core/lib/cn";
 
 export type ProgressBarSize = "sm" | "md";
-export type ProgressBarColor = "primary" | "success" | "danger" | "neutral";
+export type ProgressBarColor = "primary";
 
 export interface ProgressBarProps extends React.HTMLAttributes<HTMLDivElement> {
     value: number;
@@ -18,10 +18,7 @@ const sizeClasses: Record<ProgressBarSize, string> = {
 };
 
 const colorClasses: Record<ProgressBarColor, string> = {
-    primary: "bg-primary-600",
-    success: "bg-green-600",
-    danger: "bg-red-600",
-    neutral: "bg-neutral-500"
+    primary: "bg-primary-600"
 };
 
 export function ProgressBar({
@@ -42,7 +39,7 @@ export function ProgressBar({
             aria-valuemin={0}
             aria-valuemax={max}
             className={cn(
-                "w-full bg-neutral-200 overflow-hidden",
+                "w-full bg-neutral-400 overflow-hidden",
                 sizeClasses[size],
                 rounded && "rounded-full",
                 className
