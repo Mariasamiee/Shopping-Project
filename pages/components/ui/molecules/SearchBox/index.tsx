@@ -15,7 +15,7 @@ export interface SearchBoxProps {
 }
 
 const variantClasses: Record<SearchBoxVariant, string> = {
-    hero: "h-22 rounded-md text-base px-6 shadow-lg",
+    hero: "h-28 rounded-md text-base px-6 shadow-lg",
     compact: "h-15 rounded-md text-sm px-4 bg-neutral-200"
 };
 
