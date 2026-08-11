@@ -25,4 +25,5 @@
 
 body {
   font-family: var(--font-sans);
+  direction: rtl;
 }

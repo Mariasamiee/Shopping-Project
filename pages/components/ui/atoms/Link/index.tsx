@@ -10,12 +10,12 @@ export interface LinkProps
     href: string;
     variant?: LinkVariant;
     underline?: LinkUnderline;
-    size?: "xs" | "sm" | "base";
+    size?: "xs" | "sm" | "base"|"he";
 }
 
 const variantClasses: Record<LinkVariant, string> = {
     primary: "text-primary-700 hover:text-primary-800",
-    muted: "text-neutral-500 hover:text-neutral-700",
+    muted: "text-neutral-600 hover:text-neutral-700",
     default: "text-neutral-800 hover:text-neutral-900",
     white: "text-white/90 hover:text-white"
 };
@@ -29,7 +29,8 @@ const underlineClasses: Record<LinkUnderline, string> = {
 const sizeClasses = {
     xs: "text-xs",
     sm: "text-sm",
-    base: "text-base"
+    base: "text-base",
+    he:"text-[22px]"
 };
 
 export function Link({

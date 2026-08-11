@@ -17,9 +17,9 @@ export function ProductCard({ product }: ProductCardProps) {
                 <img src={product.thumbnail} alt={product.name} className="h-full w-full object-contain p-4" />
 
                 {hasDiscount && (
-                    <Badge>
+                    <div className="absolute top-3 -left-8 w-28 -rotate-45 bg-primary-600 text-white text-xs font-bold text-center py-1 shadow-sm">
                         {product.discountPercent}%
-                    </Badge>
+                    </div>
                 )}
             </div>
 
