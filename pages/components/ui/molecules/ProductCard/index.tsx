@@ -3,6 +3,7 @@ import NextLink from "next/link";
 import { Badge } from "@/pages/components/ui/atoms/Badge";
 import { Typography } from "@/pages/components/ui/atoms/Typography";
 import type { Product } from "@/pages/core/types/product";
+import Icon from "../../atoms/Icon";
 
 export interface ProductCardProps {
     product: Product;
@@ -17,7 +18,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 <img src={product.thumbnail} alt={product.name} className="h-full w-full object-contain p-4" />
 
                 {hasDiscount && (
-                    <div className="absolute top-3 -left-8 w-28 -rotate-45 bg-primary-600 text-white text-xs font-bold text-center py-1 shadow-sm">
+                    <div className="absolute top-3 -left-8 w-28 -rotate-45 bg-primary-600 text-black  text-xs font-bold text-center py-1 shadow-sm">
                         {product.discountPercent}%
                     </div>
                 )}
@@ -28,16 +29,20 @@ export function ProductCard({ product }: ProductCardProps) {
                     {product.name}
                 </Typography>
 
-                <div className="mt-auto pt-4 text-center">
-                    <Typography variant="priceSm" color={hasDiscount ? "primary" : "default"}>
-                        {product.discountPrice.toLocaleString("fa-IR")}تومان
-                    </Typography>
+                <div className="mt-auto pt-4 flex justify-between items-center">
+                    <Icon name="card-basket" />
 
-                    {hasDiscount && (
-                        <Typography variant="caption" color="muted" className="line-through block">
-                            {product.price.toLocaleString("fa-IR")}تومان
+                    <div>
+                        <Typography variant="priceSm" color={hasDiscount ? "primary" : "default"}>
+                            {product.discountPrice.toLocaleString("fa-IR")}تومان
                         </Typography>
-                    )}
+
+                        {hasDiscount && (
+                            <Typography variant="caption" color="muted" className="line-through block">
+                                {product.price.toLocaleString("fa-IR")}تومان
+                            </Typography>
+                        )}
+                    </div>
                 </div>
             </div>
         </NextLink>
