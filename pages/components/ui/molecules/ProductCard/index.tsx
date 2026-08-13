@@ -13,7 +13,7 @@ export function ProductCard({ product }: ProductCardProps) {
     const hasDiscount = product.discountPercent > 0;
 
     return (
-        <NextLink href={`/products/${product.slug}`} className="flex flex-col h-full rounded-xl overflow-hidden shadow-[0_2px_5px_rgba(0,0,0,0.20)] hover:shadow-[0_4px_10px_rgba(0,0,0,0.20)] transition-shadow duration-200" dir="rtl">
+        <NextLink href={`/products/${product.slug}`} className="flex flex-col bg-white h-full rounded-xl overflow-hidden shadow-[0_2px_5px_rgba(0,0,0,0.20)] hover:shadow-[0_4px_10px_rgba(0,0,0,0.20)] transition-shadow duration-200" dir="rtl">
             <div className="relative aspect-square">
                 <img src={product.thumbnail} alt={product.name} className="h-full w-full object-contain p-4" />
 
@@ -32,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 <div className="mt-auto pt-4 flex justify-between items-center">
                     <Icon name="card-basket" />
 
-                    <div>
+                    <div className="text-center">
                         <Typography variant="priceSm" color={hasDiscount ? "primary" : "default"}>
                             {product.discountPrice.toLocaleString("fa-IR")}تومان
                         </Typography>
