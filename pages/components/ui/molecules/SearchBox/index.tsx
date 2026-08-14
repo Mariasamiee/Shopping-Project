@@ -15,7 +15,7 @@ export interface SearchBoxProps {
 }
 
 const variantClasses: Record<SearchBoxVariant, string> = {
-    hero: "h-28 rounded-md text-base px-6 shadow-lg",
+    hero: "h-32 rounded-md text-[26px] px-25 shadow-2xl",
     compact: "h-15 rounded-md text-sm px-4 bg-neutral-200"
 };
 
@@ -35,12 +35,12 @@ export function SearchBox({ value, onChange, onSearch, placeholder = "محصول
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
                 className={cn(
-                    "w-full bg-white outline-none placeholder:text-neutral-500 placeholder:pr-12 focus:border-neutral-300 transition-colors duration-200 pl-10",
+                    "w-full bg-white outline-none placeholder:text-neutral-500  focus:border-neutral-300 transition-colors duration-200 pl-10",
                     variantClasses[variant]
                 )} />
 
-            <button type="button" onClick={onSearch} className="absolute right-8 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600">
-                <Icon name="Search" size={variant === "hero" ? 20 : 25} />
+            <button type="button" onClick={onSearch} className="absolute right-10 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600">
+                <Icon name="Search" size={variant === "hero" ? 30 : 25} />
             </button>
         </div>
     )

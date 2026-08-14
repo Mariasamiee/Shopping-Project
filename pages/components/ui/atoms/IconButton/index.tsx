@@ -2,7 +2,7 @@ import * as React from "react";
 import { cn } from "@/pages/core/lib/cn";
 
 export type IconButtonVariant = "solid" | "outline" | "ghost";
-export type IconButtonColor = "primary" | "neutral";
+export type IconButtonColor = "primary" | "neutral" | "default";
 export type IconButtonSize = "sm" | "md" | "lg";
 
 export interface IconButtonProps
@@ -12,7 +12,7 @@ export interface IconButtonProps
     color?: IconButtonColor;
     size?: IconButtonSize;
     rounded?: "md" | "full";
-    label: string;
+    label?: string;
 }
 
 const sizeClasses: Record<IconButtonSize, string> = {
@@ -34,6 +34,11 @@ const colorClasses: Record<IconButtonColor, Record<IconButtonVariant, string>> =
     },
     neutral: {
         solid: "bg-neutral-800 text-white hover:bg-neutral-700",
+        outline: "border border-neutral-300 text-neutral-700 hover:bg-neutral-50",
+        ghost: "text-neutral-600 hover:bg-neutral-100"
+    },
+    default: {
+        solid: "text-black",
         outline: "border border-neutral-300 text-neutral-700 hover:bg-neutral-50",
         ghost: "text-neutral-600 hover:bg-neutral-100"
     }
