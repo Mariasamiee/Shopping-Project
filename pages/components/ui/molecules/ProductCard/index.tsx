@@ -1,9 +1,10 @@
-import * as React from "react";
 import NextLink from "next/link";
-import { Badge } from "@/pages/components/ui/atoms/Badge";
 import { Typography } from "@/pages/components/ui/atoms/Typography";
 import type { Product } from "@/pages/core/types/product";
 import Icon from "../../atoms/Icon";
+import { QuantitySelector } from "../QuantitySelector";
+import { useAppDispatch, useAppSelector } from "@/pages/core/store/hooks";
+import { addItem, increaseQuantity, decreaseQuantity } from "@/pages/core/store/slices/cartSlice";
 
 export interface ProductCardProps {
     product: Product;
@@ -11,6 +12,33 @@ export interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
     const hasDiscount = product.discountPercent > 0;
+    const dispatch = useAppDispatch();
+
+    const quantity = useAppSelector((state) => {
+        const item = state.cart.items.find((i) => i.id === product.id);
+        return item?.quantity || 0;
+    })
+
+    const handleAddToCart = () => {
+        dispatch(
+            addItem({
+                id: product.id,
+                name: product.name,
+                image: product.thumbnail,
+                price: product.price,
+                discountPrice: product.discountPrice,
+                quantity: 1
+            })
+        )
+    }
+
+    const handleQuantityChange = (newValue: number) => {
+        if (newValue > quantity) {
+            dispatch(increaseQuantity(product.id));
+        } else {
+            dispatch(decreaseQuantity(product.id));
+        }
+    }
 
     return (
         <NextLink href={`/products/${product.slug}`} className="flex flex-col bg-white h-full rounded-xl overflow-hidden shadow-[0_2px_5px_rgba(0,0,0,0.20)] hover:shadow-[0_4px_10px_rgba(0,0,0,0.20)] transition-shadow duration-200" dir="rtl">
@@ -29,8 +57,21 @@ export function ProductCard({ product }: ProductCardProps) {
                     {product.name}
                 </Typography>
 
-                <div className="mt-auto pt-4 flex justify-between items-center">
-                    <Icon name="card-basket" />
+                <div className="mt-auto pt-4 flex justify-between items-center gap-0.5">
+                    <div onClick={(e) => e.preventDefault()}>
+                        {quantity > 0 ? (
+                            <QuantitySelector
+                                value={quantity}
+                                onChange={handleQuantityChange}
+                                min={0}
+                                size="sm"
+                            />
+                        ) : (
+                            <button type="button" onClick={handleAddToCart}>
+                                <Icon name="card-basket" />
+                            </button>
+                        )}
+                    </div>
 
                     <div className="text-center">
                         <Typography variant="priceSm" color={hasDiscount ? "primary" : "default"}>
