@@ -12,32 +12,30 @@ export function ProductCard({ product }: ProductCardProps) {
     const hasDiscount = product.discountPercent > 0;
 
     return (
-        <NextLink
-            href={`/products/${product.slug}`}
-            className="block border border-neutral-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200">
-            <div className="relative aspect-square bg-neutral-50">
-                <img src={product.thumbnail} alt={product.name} className="h-full w-full object-cover" />
+        <NextLink href={`/products/${product.slug}`} className="flex flex-col h-full rounded-xl overflow-hidden shadow-[0_2px_5px_rgba(0,0,0,0.20)] hover:shadow-[0_4px_10px_rgba(0,0,0,0.20)] transition-shadow duration-200" dir="rtl">
+            <div className="relative aspect-square">
+                <img src={product.thumbnail} alt={product.name} className="h-full w-full object-contain p-4" />
 
                 {hasDiscount && (
-                    <Badge color="primary" variant="solid" className="absolute top-2 right-2">
-                        ٪{product.discountPercent}
-                    </Badge>
+                    <div className="absolute top-3 -left-8 w-28 -rotate-45 bg-primary-600 text-white text-xs font-bold text-center py-1 shadow-sm">
+                        {product.discountPercent}%
+                    </div>
                 )}
             </div>
 
-            <div className="p-3 flex flex-col gap-1">
-                <Typography variant="bodySm" truncate>
+            <div className="flex flex-col flex-1 px-3 pb-3">
+                <Typography variant="bodySm" color="default" className="line-clamp-2">
                     {product.name}
                 </Typography>
 
-                <div className="flex items-center gap-2">
-                    <Typography variant="priceSm">
-                        {product.discountPrice.toLocaleString("fa-IR")} تومان
+                <div className="mt-auto pt-4 text-center">
+                    <Typography variant="priceSm" color={hasDiscount ? "primary" : "default"}>
+                        {product.discountPrice.toLocaleString("fa-IR")}تومان
                     </Typography>
 
                     {hasDiscount && (
-                        <Typography variant="caption" color="muted" className="line-through">
-                            {product.price.toLocaleString("fa-IR")}
+                        <Typography variant="caption" color="muted" className="line-through block">
+                            {product.price.toLocaleString("fa-IR")}تومان
                         </Typography>
                     )}
                 </div>

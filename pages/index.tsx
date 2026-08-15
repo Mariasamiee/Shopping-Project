@@ -1,7 +1,9 @@
-export default function Home() {
+import { Header } from "./components/ui/organisms/Header";
 
+export default function Home() {
   return (
-    <div >
+    <div>
+      <Header/>
     </div>
   )
 }

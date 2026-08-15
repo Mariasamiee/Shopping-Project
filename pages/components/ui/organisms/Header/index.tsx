@@ -4,8 +4,6 @@ import { Link } from "@/pages/components/ui/atoms/Link";
 import { Badge } from "@/pages/components/ui/atoms/Badge";
 import { useAppSelector } from "@/pages/core/store/hooks";
 import { selectCartTotalQuantity } from "@/pages/core/store/slices/cartSlice";
-
-
 import Icon from "../../atoms/Icon";
 
 const navLinks = [
@@ -27,7 +25,7 @@ export function Header() {
 
                 <nav className="flex md:flex gap-7 ml-110">
                     {navLinks.map((link) => (
-                        <Link key={link.href} href={link.href} variant="muted"  underline="none">
+                        <Link key={link.href} href={link.href} variant="muted" size="he" underline="none">
                             {link.label}
                         </Link>
                     ))}

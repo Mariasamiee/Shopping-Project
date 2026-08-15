@@ -1,26 +1,24 @@
 import * as React from "react";
-
 export interface AuthLayoutProps {
-  breadcrumb: string;
   children: React.ReactNode;
 }
 
-export function AuthLayout({ breadcrumb, children }: AuthLayoutProps) {
+export function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-neutral-100 flex flex-col items-center py-8 px-4" dir="rtl">
-      <div className="w-full max-w-5xl">
-        <p className="text-neutral-400 text-sm mb-3">{breadcrumb}</p>
+    <div className="min-h-screen w-full bg-white flex items-center justify-center p-4 md:p-8" dir="rtl">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10 lg:gap-16">
 
-        <div className="bg-white rounded-xl shadow-sm p-10 flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 flex justify-center">
-            <img
-              src="/images/auth-illustration.png"
-              alt="sport"
-              className="max-w-xs w-full"
-            />
+          <div className="w-full md:w-1/1 flex justify-center">
+            <div className="w-full max-w-[410px]">
+              {children}
+            </div>
           </div>
 
-          <div className="flex-1 w-full max-w-sm">{children}</div>
+          <div className="w-full md:w-1/1 flex justify-center">
+            <img src="/images/auth.png" alt=""
+              className="w-full max-w-[520px] h-auto object-contain" />
+          </div>
         </div>
       </div>
     </div>

@@ -1,37 +1,60 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface User {
-    id: string;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
+  id: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+}
+
+interface RegisteredUser extends User {
+  password: string;
 }
 
 interface AuthState {
-    user: User | null;
-    isAuthenticated: boolean;
+  user: User | null;
+  isAuthenticated: boolean;
+  registeredUsers: RegisteredUser[];
 }
 
 const initialState: AuthState = {
-    user: null,
-    isAuthenticated: false
-};
+  user: null,
+  isAuthenticated: false,
+  registeredUsers: [],
+}
 
 const authSlice = createSlice({
-    name: "auth",
-    initialState,
-    reducers: {
-        setUser: (state, action: PayloadAction<User>) => {
-            state.user = action.payload;
-            state.isAuthenticated = true;
-        },
+  name: "auth",
+  initialState,
+  reducers: {
+    registerUser: (state, action: PayloadAction<RegisteredUser>) => {
+      state.registeredUsers.push(action.payload);
+      const { password, ...userWithoutPassword } = action.payload;
+      state.user = userWithoutPassword;
+      state.isAuthenticated = true;
+    },
 
-        logout: (state) => {
-            state.user = null;
-            state.isAuthenticated = false;
-        },
+    loginUser: (
+      state,
+      action: PayloadAction<{ phoneNumber: string; password: string }>
+    ) => {
+      const found = state.registeredUsers.find(
+        (u) =>
+          u.phoneNumber === action.payload.phoneNumber &&
+          u.password === action.payload.password
+      )
+      if (found) {
+        const { password, ...userWithoutPassword } = found;
+        state.user = userWithoutPassword;
+        state.isAuthenticated = true;
+      }
+    },
+    logout: (state) => {
+      state.user = null;
+      state.isAuthenticated = false;
     }
+  }
 })
 
-export const { setUser, logout } = authSlice.actions;
+export const { registerUser, loginUser, logout } = authSlice.actions;
 export default authSlice.reducer;

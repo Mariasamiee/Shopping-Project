@@ -20,7 +20,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const sizeClasses: Record<ButtonSize, string> = {
     sm: "h-8 px-3 text-xs",
     md: "h-10 px-4 text-sm",
-    lg: "h-12 px-6 text-base",
+    lg: "h-12 px-4 text-base",
     xl: "h-14 px-8 text-lg",
 };
 
@@ -37,7 +37,7 @@ const roundedClasses = {
 const colorClasses: Record<ButtonColor, Record<ButtonVariant, string>> = {
     primary: {
         solid: "bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800 focus:ring-primary-500",
-        outline: "bg-white border border-primary-600 text-black hover:bg-primary-50 focus:ring-primary-500",
+        outline: "bg-white border-2 border-primary-600 text-black hover:bg-primary-50 focus:ring-primary-500",
         link: "text-primary-700 underline hover:text-primary-500"
     }
 };
