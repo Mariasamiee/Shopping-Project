@@ -52,11 +52,11 @@ export function Checkbox({
                 />
                 <span
                     className={cn(
-                        "flex items-center justify-center rounded-md border transition-colors duration-200",
+                        "flex items-center justify-center rounded-sm border transition-colors duration-200",
                         sizeClasses[size],
                         error
                             ? "border-red-500"
-                            : "border-neutral-300 peer-checked:border-primary-600",
+                            : "border-neutral-500 peer-checked:border-primary-600",
                         "peer-checked:bg-primary-600",
                         "peer-focus-visible:ring-2 peer-focus-visible:ring-primary-200",
                         className
@@ -67,7 +67,7 @@ export function Checkbox({
             </span>
 
             {label && (
-                <span className={cn("text-sm", error ? "text-red-600" : "text-neutral-700")}>
+                <span className={cn("text-[12px]", error ? "text-red-600" : "text-[#1E44C9]")}>
                     {label}
                 </span>
             )}

@@ -35,7 +35,7 @@ const roundedClasses = {
 };
 
 const variantClasses: Record<InputVariant, string> = {
-    outline: "bg-white border border-neutral-300 text-neutral-800 placeholder:text-neutral-400 hover:border-neutral-400 focus:border-primary-600",
+    outline: "bg-white border border-neutral-400 text-neutral-800 placeholder:text-neutral-500 placeholder:text-[12px] hover:border-neutral-600 focus:border-primary-600",
     filled: "bg-neutral-50 border border-transparent text-neutral-800 placeholder:text-neutral-400 hover:bg-neutral-100 focus:border-primary-600 focus:bg-white",
 };
 
@@ -106,7 +106,7 @@ export function Input({
                     <button
                         type="button"
                         onClick={() => setShowPassword((prev) => !prev)}
-                        className="absolute left-3 text-neutral-400 hover:text-neutral-600 z-10 flex items-center"
+                        className="absolute left-5 text-neutral-400 hover:text-neutral-600 z-10 flex items-center"
                         tabIndex={-1}
                     >
                         {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}

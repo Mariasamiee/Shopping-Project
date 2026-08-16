@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {getLayout(<Component {...pageProps} />)}
-        <ToastContainer rtl position="top-left" autoClose={3000} />
+        <ToastContainer rtl position="top-center" autoClose={3000} />
       </PersistGate>
     </Provider>
   )
