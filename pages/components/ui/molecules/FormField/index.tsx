@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import { Input, type InputProps } from "@/pages/components/ui/atoms/Input";
+import { Input,type InputProps } from "@/pages/components/ui/atoms/Input";
 
 export interface FormFieldProps extends Omit<InputProps, "error" | "errorMessage"> {
     name: string
