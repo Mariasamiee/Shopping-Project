@@ -58,7 +58,7 @@ export function LoginForm() {
 
             <Typography variant="bodySm" color="default" align="center">
               من هنوز ثبت نام نکرده ام؟{" "}
-              <Link href="/Register" variant="primary">
+              <Link href="/register" variant="primary">
                 صفحه ثبت نام
               </Link>
             </Typography>
