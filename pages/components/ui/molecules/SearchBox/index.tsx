@@ -16,7 +16,7 @@ export interface SearchBoxProps {
 
 const variantClasses: Record<SearchBoxVariant, string> = {
     hero: "h-32 rounded-md text-[26px] px-25 shadow-2xl",
-    compact: "h-15 rounded-md text-sm px-4 bg-neutral-200"
+    compact: "h-15 rounded-md text-lg px-25 bg-neutral-200"
 };
 
 export function SearchBox({ value, onChange, onSearch, placeholder = "محصول مورد نظر خود را جستجو کنید...", variant = "hero", className }: SearchBoxProps) {
@@ -35,7 +35,7 @@ export function SearchBox({ value, onChange, onSearch, placeholder = "محصول
                 onKeyDown={handleKeyDown}
                 placeholder={placeholder}
                 className={cn(
-                    "w-full bg-white outline-none placeholder:text-neutral-500  focus:border-neutral-300 transition-colors duration-200 pl-10",
+                    "w-full bg-white outline-none placeholder:text-neutral-500 focus:border-neutral-300 transition-colors duration-200 pl-10",
                     variantClasses[variant]
                 )} />
 

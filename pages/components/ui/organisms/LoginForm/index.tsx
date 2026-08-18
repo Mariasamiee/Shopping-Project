@@ -38,9 +38,9 @@ export function LoginForm() {
 
   return (
     <div className="flex flex-col gap-16">
-      <div className="flex items-center gap-5">
-        <div className="w-1 h-16 bg-primary-600 rounded-full" />
-        <Typography variant="h1">ورود به حساب کاربری</Typography>
+      <div className="flex items-center gap-3">
+        <div className="w-1 h-12 bg-primary-600 rounded-full" />
+        <Typography variant="h2">ورود به حساب کاربری</Typography>
       </div>
 
       <Formik initialValues={initialValues} validationSchema={loginSchema} onSubmit={handleSubmit}>

@@ -1,9 +1,11 @@
-import { AuthLayout } from "@/pages/components/partial/AuthLayout";
+import type { NextPageWithLayout } from "@/pages/_app";
+import { getAuthLayout } from "@/pages/components/partial/AuthLayout";
 import { LoginForm } from "@/pages/components/ui/organisms/LoginForm";
-export default function LoginPage() {
-  return (
-    <AuthLayout>
-      <LoginForm />
-    </AuthLayout>
-  )
+
+const LoginPage: NextPageWithLayout = () => {
+  return <LoginForm />
 }
+
+LoginPage.getLayout = getAuthLayout;
+
+export default LoginPage
