@@ -29,13 +29,13 @@ export function Header() {
     };
 
     return (
-        <header className="shadow-lg bg-white">
+        <header className="sticky top-0 z-50 shadow-lg bg-white">
             <div className="max-w-337.5 mx-auto h-30 flex items-center justify-between">
                 <NextLink href="/" className="shrink-0">
                     <Icon name="acoIcon" size={70} />
                 </NextLink>
 
-                <nav className="flex md:flex gap-7 ml-110">
+                <nav className="flex md:flex gap-7 ml-98">
                     {navLinks.map((link) => (
                         <Link key={link.href} href={link.href} variant="muted" size="he" underline="none">
                             {link.label}
@@ -43,7 +43,7 @@ export function Header() {
                     ))}
                 </nav>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 ml-14">
                     {user ? (
                         <Button variant="outline" color="primary" size="lg" leftIcon={<Icon name="login" size={25} />} onClick={handleLogout}>
                             خروج
