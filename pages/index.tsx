@@ -5,6 +5,8 @@ import { Hero } from "./components/ui/organisms/Hero";
 import { useState } from "react";
 import { SpecialOfferSection } from "./components/ui/organisms/SpecialOfferSection";
 import { Input } from "./components/ui/atoms/Input";
+import { CategorySection } from "./components/ui/organisms/CategorySection";
+
 
 export default function Home() {
   // const { data: products } = useGetProductsQuery({
@@ -24,12 +26,14 @@ export default function Home() {
         onSearchChange={setSearch}
         onSearch={() => console.log("جستجو:", search)}
       />
+        <CategorySection />
       <ProductSection
         title="جدیدترین محصولات"
         products={(products || []).slice(0, 5)}
         viewAllHref="/products?sort=newest"
       />
     <SpecialOfferSection products={discounted} viewAllHref="/products?filter=discount" />
+  
     </div>
   )
 }
