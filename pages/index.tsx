@@ -6,6 +6,7 @@ import { useState } from "react";
 import { SpecialOfferSection } from "./components/ui/organisms/SpecialOfferSection";
 import { Input } from "./components/ui/atoms/Input";
 import { CategorySection } from "./components/ui/organisms/CategorySection";
+import { BannerSection } from "./components/ui/organisms/Banner";
 
 
 export default function Home() {
@@ -32,8 +33,9 @@ export default function Home() {
         products={(products || []).slice(0, 5)}
         viewAllHref="/products?sort=newest"
       />
+        <BannerSection />
     <SpecialOfferSection products={discounted} viewAllHref="/products?filter=discount" />
-  
+
     </div>
   )
 }
