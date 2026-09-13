@@ -7,6 +7,7 @@ import { SpecialOfferSection } from "./components/ui/organisms/SpecialOfferSecti
 import { Input } from "./components/ui/atoms/Input";
 import { CategorySection } from "./components/ui/organisms/CategorySection";
 import { BannerSection } from "./components/ui/organisms/Banner";
+import { TripleBannerSection } from "./components/ui/organisms/TripleBanner";
 
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
 
   const [search, setSearch] = useState("");
 
-    const { data: products } = useGetProductsQuery();
+  const { data: products } = useGetProductsQuery();
   const discounted = (products || []).filter((p) => p.discountPercent > 0);
 
   return (
@@ -27,15 +28,15 @@ export default function Home() {
         onSearchChange={setSearch}
         onSearch={() => console.log("جستجو:", search)}
       />
-        <CategorySection />
+      <CategorySection />
       <ProductSection
         title="جدیدترین محصولات"
         products={(products || []).slice(0, 5)}
         viewAllHref="/products?sort=newest"
       />
-        <BannerSection />
-    <SpecialOfferSection products={discounted} viewAllHref="/products?filter=discount" />
-
+      <BannerSection />
+      <SpecialOfferSection products={discounted} viewAllHref="/products?filter=discount" />
+      <TripleBannerSection />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { cn } from "@/pages/core/lib/cn";
 
 export type TypographyVariant = "h1" | "h2" | "h3" | "h4" | "body" | "bodySm" | "caption" | "price" | "priceSm";
 export type TypographyColor = "default" | "muted" | "primary" | "danger" | "success" | "white";
-export type TypographyWeight = "normal" | "medium" | "semibold" | "bold";
+export type TypographyWeight = "normal" | "medium" | "semibold" | "bold"| "black";
 export type TypographyTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div" | "label";
 
 export interface TypographyProps
@@ -45,6 +45,7 @@ const weightClasses: Record<TypographyWeight, string> = {
     medium: "font-medium",
     semibold: "font-semibold",
     bold: "font-bold",
+    black: "font-black",
 };
 
 const colorClasses: Record<TypographyColor, string> = {
