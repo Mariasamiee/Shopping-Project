@@ -6,7 +6,7 @@ const banners = [
     { id: 3, title: "یه مبارزه جذاب با بهترین دستکش ها", image: "/images/Rectangle-40.png", href: "/products?category=gloves" },
     { id: 2, title: "ست بدنسازیت رو از اینجا بگیر!", image: "/images/Rectangle-38.png", href: "/products?category=gym" },
     { id: 1, title: "بهترین شلوار های کوهنوردی", image: "/images/Rectangle-39.png", href: "/products?category=pants" },
-];
+]
 
 export function TripleBannerSection() {
     return (
@@ -30,5 +30,5 @@ export function TripleBannerSection() {
                 ))}
             </div>
         </div>
-    );
+    )
 }
